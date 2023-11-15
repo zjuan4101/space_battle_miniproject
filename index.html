@@ -11,25 +11,42 @@
 <body>
     <!-- HP Bars in header -->
     <div class="hp-bars">
-        <p class="total-hp">HP 0/100</p>
-        <div class="player-hp-container">
-            <div class="player-hp"></div>
+        <div class="hp-bars__player">
+            <p class="total-hp">HP 0/100</p>
+            <div class="player-container">
+                <h3 class="player-name">USS Assembly</h3>
+                <div class="player-hp-container">
+                    <div class="player-hp"></div>
+                </div>
+            </div>
         </div>
         <img class="ga-logo" src="https://seeklogo.com/images/G/general-assembly-logo-D5C634F07A-seeklogo.com.png" alt="">
-        <div class="enemy-hp-container">
-            <div class="enemy-hp"></div>
+        <div class="hp-bars__enemy">
+            <div class="enemy-container">
+                <h3 class="enemy-name">Garbage Man</h3>
+                <div class="enemy-hp-container">
+                    <div class="enemy-hp"></div>
+                </div>
+            </div>
+            <p class="total-hp">HP 0/100</p>
         </div>
-        <p class="total-hp">HP 0/100</p>
+    </div>
+    <div class="characters">
+        <!-- Player Ship -->
+        <div class="player">
+            <img class="player-ship" src="https://i.imgur.com/CoK62ir.png" alt="">
+            <img class="player-laser" src="laser-removebg-preview.png" alt="">
+        </div>
+
+        <!-- Enemy Ships -->
+        <div class="enemy">
+            <img class="enemy-ship" src="https://i.imgur.com/InBfg8s.png" alt="">
+        </div>
     </div>
 
-    <!-- Player Ship -->
-    <div class="player">
-        <img class="player-ship" src="https://i.imgur.com/CoK62ir.png" alt="">
-    </div>
-
-    <!-- Enemy Ships -->
-    <div class="enemy">
-        <img class="enemy-ship" src="https://i.imgur.com/InBfg8s.png" alt="">
+    <!-- Play-by-Play Logs -->
+    <div class="play-logs">
+        <p class="play-logs__message">USS Assembly attacked Garbage Man for 20HP! Critical Hit!</p>
     </div>
 
     <!-- Attack, Repair, Defend Buttons -->
