@@ -31,8 +31,27 @@ class Spaceship {
 
         // 
     attack() {
-//insert attack
+        setTimeout(() => {
+            let probability = generateRandomNum(10, 1);
+            if (probability > 3) {
+                Enemy.hp -= playerOne.dmg;
+                    //insert some dom manipulation to display what the console is logging
+                    //and depleting enemy hp bar
+                console.log(`${playerOne.name} attacked ${Enemy.name} for ${playerOne.dmg} damage!`);
+            } else {
+                    console.log(`${playerOne.name} missed!`);
+            }
+        }, 500);
     }
+    
+    //attack event listener
+    
+    const attackBtn = document.querySelector("#attack-btn");
+    
+    attackBtn.addEventListener("click", () => {
+        playerOne.attack();
+        console.log(Enemy.hp);
+    });
 }
 
 // Create Player subclass that extends Spaceship
