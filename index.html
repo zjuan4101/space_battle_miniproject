@@ -3,9 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/86/86581.png"/>
+    <title>Space Battle</title>
 </head>
 <body>
-    
+    <!-- HP Bars in header -->
+    <div class="hp-bars">
+        <p class="total-hp">HP 0/100</p>
+        <div class="player-hp-container">
+            <div class="player-hp"></div>
+        </div>
+        <img class="ga-logo" src="https://seeklogo.com/images/G/general-assembly-logo-D5C634F07A-seeklogo.com.png" alt="">
+        <div class="enemy-hp-container">
+            <div class="enemy-hp"></div>
+        </div>
+        <p class="total-hp">HP 0/100</p>
+    </div>
+
+    <!-- Player Ship -->
+    <div class="player">
+        <img class="player-ship" src="https://i.imgur.com/CoK62ir.png" alt="">
+    </div>
+
+    <!-- Enemy Ships -->
+    <div class="enemy">
+        <img class="enemy-ship" src="https://i.imgur.com/uzR6lqo.png" alt="">
+    </div>
+
+    <!-- Attack, Repair, Defend Buttons -->
+    <div class="player-moves">
+        <button class="player-move-btn">Attack</button>
+        <button class="player-move-btn">Repair</button>
+        <button class="player-move-btn">Defend</button>
+    </div>
 </body>
 </html>

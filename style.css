@@ -1,0 +1,109 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 10px;
+}
+
+body {
+    text-align: center;
+    width: 100%;
+    height: 100vh;
+    background: url("https://img.freepik.com/premium-photo/glowing-shimmering-stars-space-abstract-background_250994-1378.jpg")
+}
+
+/* HP Bars / header */
+.hp-bars {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.ga-logo {
+    margin-top: 2rem;
+    width: 10rem;
+}
+
+.player-hp-container, .enemy-hp-container {
+    margin-top: 5rem;
+    width: 30%;
+    height: 2.5rem;
+    background-color: white;
+    border-radius: 30px;
+    border: 2px solid red;
+}
+
+.player-hp, .enemy-hp {
+    background-color: red;
+    height: 100%;
+    margin-bottom: 10rem;
+    border-radius: 30px;
+}
+
+.player-hp {
+    width: 60%;
+}
+
+.enemy-hp {
+    width: 30%;
+}
+
+.total-hp {
+    margin-top: 5rem;
+    font-size: 2rem;
+    font-weight: bold;
+    color: red;
+}
+
+
+/* Player Ship/Enemy Ship Styling */
+.player-ship {
+    position: absolute;
+    width: 60rem;
+    bottom: 20rem;
+    left: 0;
+    animation: shipIdlePlayer 3s infinite;
+}
+
+.enemy-ship {
+    position: absolute;
+    width: 50rem;
+    bottom: 50rem;
+    right: 0rem;
+    animation: shipIdleEnemy 3s infinite;
+}
+
+/* Player move buttons */
+.player-moves {
+    margin-top: 105rem;
+}
+
+.player-move-btn {
+    width: 20rem;
+    height: 10rem;
+    border-radius: 30px;
+    background-color: red;
+    border: none;
+    color: white;
+    font-size: 3rem;
+    transition: .3s ease;
+}
+
+.player-move-btn:hover {
+    cursor: pointer;
+    background-color: white;
+    border: 5px solid red;
+    font-weight: bold;
+    color: red;
+    transition: .3s ease;
+}
+
+@keyframes shipIdlePlayer {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+
+@keyframes shipIdleEnemy {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(20px); }
+}
