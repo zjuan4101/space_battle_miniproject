@@ -33,6 +33,7 @@ function initializeContent(player, enemy) {
     playerNameEl.style.fontFamily = "'Space Grotesk', sans-serif"; //ADDED BY BRYCE/WILL
     playerHealthBarEl.setAttribute('max', player.maxHp);
     playerHealthBarEl.setAttribute('value', player.currentHp);
+    // playerHealthBarEl.style.backgroundColor = 'black'; -- > was trying to change the background color of the health bars.. can someone advise
     playerHealthNumberEl.textContent = player.currentHp;
     playerHealthMaxNumberEl.textContent = player.maxHp;
 
