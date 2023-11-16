@@ -16,14 +16,16 @@
     <!-- HP Bars in header -->
     <div class="hp-bars">
       <div class="hp-bars__player">
-        <p class="total-hp">HP <span id="php"></span>/100</p>
+        <!-- <p class="total-hp">HP <span id="php"></span>/<span id="total-php"></span></p> -->
         <div class="player-container">
           <h3 id='player-name' class="player-name">USS Assembly</h3>
           <div class="player-hp-container">
-            <div id='player-health-bar' class="player-hp"></div>
+            <progress id='player-health-bar' max="100" value="50" class="player-hp"></progress>
+            <p class="total-hp">HP <span id="php"></span>/<span id="total-php"></span></p>
           </div>
         </div>
       </div>
+      <div class="level-container">
       <img
         class="ga-logo"
         src="https://seeklogo.com/images/G/general-assembly-logo-D5C634F07A-seeklogo.com.png"
@@ -32,14 +34,16 @@
       <div class="level">LEVEL
         <div class="levelv"><span id="level"></span>/10</div>
       </div>
+    </div>
       <div class="hp-bars__enemy">
+        <!-- <p class="total-hp">HP <span id="ehp"></span>/<span id="total-ehp"></span></p> -->
         <div class="enemy-container">
           <h3 id='enemy-name' class="enemy-name">Garbage Man</h3>
           <div class="enemy-hp-container">
-            <div id='enemy-health-bar' class="enemy-hp"></div>
+            <progress id='enemy-health-bar' max="100" value="50" class="enemy-hp"></progress>
+            <p class="total-hp">HP <span id="ehp"></span>/<span id="total-ehp"></span></p>
           </div>
         </div>
-        <p class="total-hp">HP <span id="ehp"></span>/100</p>
       </div>
     </div>
     <div class="characters">
@@ -57,7 +61,7 @@
     </div>
 
     <!-- Play-by-Play Logs -->
-    <div class="play-logs">
+    <div id='play-logs' class="play-logs">
       <p class="play-logs__message">
         USS Assembly attacked Garbage Man for 20HP! Critical Hit!
       </p>

@@ -50,22 +50,64 @@
   .player-container,
   .enemy-container {
     width: 80%;
+    margin-left: 8rem;
   }
   
   .total-hp {
-    margin: 5rem 3rem;
+    /* margin: 5rem 3rem; */
     width: 13rem;
     font-size: 2rem;
     font-weight: bold;
-    color: red;
+    color: white;
+    top: -22.10px;
+    left: 0; 
+    /* transform: translate(-50%, -50%); */
+    display: inline-block; 
+    position: relative;
+    /* display added by will & bryce */
   }
   
   .ga-logo {
     margin: 2rem 4rem;
     width: 10rem;
   }
+
+  /* Wills health bars */
+  #player-health-bar {
+    width: 100%; 
+    height: 20px; 
+    appearance: none; 
+    border: 1px solid #ccc; 
+  }
   
-  .player-hp-container,
+  #player-health-bar::-webkit-progress-bar {
+    background-color: #f2f2f2; 
+    width: 100%;
+  }
+  
+  #player-health-bar::-webkit-progress-value {
+    background-color: limegreen; 
+    width: 100%;
+  }
+
+  #enemy-health-bar {
+    width: 100%; 
+    height: 20px; 
+    appearance: none; 
+    border: 1px solid #ccc; 
+  }
+  
+  #enemy-health-bar::-webkit-progress-bar {
+    background-color: #f2f2f2; 
+    width: 100%;
+  }
+  
+  #enemy-health-bar::-webkit-progress-value {
+    background-color: red; 
+    width: 100%;
+  }
+
+   /* .player-hp-container,
   .enemy-hp-container {
     width: 100%;
     margin-top: 0.5rem;
@@ -73,24 +115,24 @@
     background-color: white;
     border-radius: 30px;
     border: 2px solid red;
-  }
-  
-  .player-hp,
+  } */
+
+  /* .player-hp,
   .enemy-hp {
     background-color: red;
     height: 100%;
     margin-bottom: 10rem;
     border-radius: 30px;
-  }
+  } */
   
-  .player-hp {
+  /* .player-hp {
     width: 60%;
   }
   
   .enemy-hp {
     width: 30%;
   }
-  
+   */
   /* Player Ship/Enemy Ship Styling */
   .characters {
     display: flex;
@@ -197,15 +239,20 @@
     }
   }
   
-  
   .level {
     color: red;
-    position: absolute;
     font-size: 5rem;
     font-weight: bold;
+    /* position: relative;
+    font-weight: bold;
+    display: inline-block;
     top: 19%;
     left: 50.5%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); */
+  }
+
+  .level-container {
+    display: grid;
   }
   
   @keyframes shipIdlePlayer {
