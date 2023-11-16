@@ -1,59 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
-    <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/86/86581.png"/>
+    <link
+      rel="icon"
+      type="image/png"
+      href="https://cdn-icons-png.flaticon.com/512/86/86581.png"
+    />
     <title>Space Battle</title>
-</head>
-<body>
+  </head>
+  <body>
     <!-- HP Bars in header -->
     <div class="hp-bars">
-        <div class="hp-bars__player">
-            <p class="total-hp">HP 0/100</p>
-            <div class="player-container">
-                <h3 class="player-name">USS Assembly</h3>
-                <div class="player-hp-container">
-                    <div class="player-hp"></div>
-                </div>
-            </div>
+      <div class="hp-bars__player">
+        <p class="total-hp">HP <span id="php"></span>/100</p>
+        <div class="player-container">
+          <h3 id='player-name' class="player-name">USS Assembly</h3>
+          <div class="player-hp-container">
+            <div id='player-health-bar' class="player-hp"></div>
+          </div>
         </div>
-        <img class="ga-logo" src="https://seeklogo.com/images/G/general-assembly-logo-D5C634F07A-seeklogo.com.png" alt="">
-        <div class="hp-bars__enemy">
-            <div class="enemy-container">
-                <h3 class="enemy-name">Garbage Man</h3>
-                <div class="enemy-hp-container">
-                    <div class="enemy-hp"></div>
-                </div>
-            </div>
-            <p class="total-hp">HP 0/100</p>
+      </div>
+      <img
+        class="ga-logo"
+        src="https://seeklogo.com/images/G/general-assembly-logo-D5C634F07A-seeklogo.com.png"
+        alt=""
+      />
+      <div class="level">LEVEL
+        <div class="levelv"><span id="level"></span>/10</div>
+      </div>
+      <div class="hp-bars__enemy">
+        <div class="enemy-container">
+          <h3 id='enemy-name' class="enemy-name">Garbage Man</h3>
+          <div class="enemy-hp-container">
+            <div id='enemy-health-bar' class="enemy-hp"></div>
+          </div>
         </div>
+        <p class="total-hp">HP <span id="ehp"></span>/100</p>
+      </div>
     </div>
     <div class="characters">
-        <!-- Player Ship -->
-        <div class="player">
-            <img class="player-ship" src="https://i.imgur.com/CoK62ir.png" alt="">
-            <img class="player-laser" src="laser-removebg-preview.png" alt="">
-        </div>
+      <!-- Player Ship -->
+      <div class="player">
+        <img class="player-ship" src="https://i.imgur.com/CoK62ir.png" alt="" />
+        <img class="player-attack" src="https://i.imgur.com/iZ1qLxs.png" alt="">
+      </div>
 
-        <!-- Enemy Ships -->
-        <div class="enemy">
-            <img class="enemy-ship" src="https://i.imgur.com/InBfg8s.png" alt="">
-        </div>
+      <!-- Enemy Ships -->
+      <div class="enemy">
+        <img class="enemy-ship" src="https://i.imgur.com/InBfg8s.png" alt="" />
+        <img class="garbage-attack" src="https://i.imgur.com/v6hyIAT.png" alt="">
+      </div>
     </div>
 
     <!-- Play-by-Play Logs -->
     <div class="play-logs">
-        <p class="play-logs__message">USS Assembly attacked Garbage Man for 20HP! Critical Hit!</p>
+      <p class="play-logs__message">
+        USS Assembly attacked Garbage Man for 20HP! Critical Hit!
+      </p>
     </div>
 
     <!-- Attack, Repair, Defend Buttons -->
     <div class="player-moves">
-        <button class="player-move-btn">Attack</button>
-        <button class="player-move-btn">Repair</button>
-        <button class="player-move-btn">Defend</button>
+      <button id='attack-btn' class="player-move-btn">Attack</button>
+      <button id='repair-btn' class="player-move-btn">Repair</button>
+      <button id='defend-btn' class="player-move-btn">Defend</button>
     </div>
-</body>
+  </body>
 </html>
