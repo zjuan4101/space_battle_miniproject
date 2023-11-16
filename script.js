@@ -1,14 +1,4 @@
-// GAME NOTES ===========================================
-
-//3 hp values: hp start, hp added, current hp
-//hp start = first number we pull in when game begins (100)
-//hp added = anytime we want to add hp with upgrades or levels increasing
-//current hp = hp start + hp added 
-//method updateCurrentHp that subtracts the dmg from currentHp
-//when level restarts currentHp = hp start + hp added
-
-
-// GRAB DOM ELEMENTS ===========================================
+//SETTING VARIABLES ===========================================
 const attackBtnEl = document.getElementById('attack-btn');
 const repairBtnEl = document.getElementById('repair-btn');
 const defendBtnEl = document.getElementById('defend-btn');
@@ -20,17 +10,16 @@ const playerHealthMaxNumberEl = document.getElementById('total-php');
 
 const enemyNameEl = document.getElementById('enemy-name');
 const enemyHealthBarEl = document.getElementById('enemy-health-bar');
-// const playerHealthNumberEl = document.getElementById('ehp');
 const enemyHealthNumberEl = document.getElementById('ehp');
 const enemyHealthMaxNumberEl = document.getElementById('total-ehp');
+//WILL AND BRYCE DEBUGGED THIS ^SHIT^ LETS FUGGEN GO
 
 const gameLevel = document.getElementById('level');
 const playLogs = document.getElementById('play-logs');
 
 
 // UTILITY FUNCTIONS ===========================================
-
-//Generate random number
+//FUNCTION TO GENERATE RANDOM NUMBER
 function generateRandomNum(num1, num2){
     return Math.floor(Math.random() * num1) + num2
 }
@@ -38,33 +27,28 @@ function generateRandomNum(num1, num2){
 function initializeContent(player, enemy) {
     console.log("initializing content...");
     playerNameEl.textContent = player.name;
-    playerNameEl.style.textTransform = 'uppercase';
-    playerNameEl.style.fontSize = '3rem';
-    playerNameEl.style.fontWeight = 'bold';
-    playerNameEl.style.fontFamily = "'Space Grotesk', sans-serif"; //ADDED BY BRYCE
+    playerNameEl.style.textTransform = 'uppercase'; //ADDED BY BRYCE/WILL
+    playerNameEl.style.fontSize = '3rem'; //ADDED BY BRYCE/WILL
+    playerNameEl.style.fontWeight = 'bold'; //ADDED BY BRYCE/WILL
+    playerNameEl.style.fontFamily = "'Space Grotesk', sans-serif"; //ADDED BY BRYCE/WILL
     playerHealthBarEl.setAttribute('max', player.maxHp);
     playerHealthBarEl.setAttribute('value', player.currentHp);
     playerHealthNumberEl.textContent = player.currentHp;
     playerHealthMaxNumberEl.textContent = player.maxHp;
 
     enemyNameEl.textContent = enemy.name;
-    enemyNameEl.style.fontFamily = "'Space Grotesk', sans-serif"; //ADDED BY BRYCE
-    enemyNameEl.style.textTransform = 'uppercase';
-    enemyNameEl.style.fontSize = '3rem';
-    enemyNameEl.style.fontWeight = 'bold';
+    enemyNameEl.style.fontFamily = "'Space Grotesk', sans-serif"; //ADDED BY BRYCE/WILL
+    enemyNameEl.style.textTransform = 'uppercase'; //ADDED BY BRYCE/WILL
+    enemyNameEl.style.fontSize = '3rem'; //ADDED BY BRYCE/WILL
+    enemyNameEl.style.fontWeight = 'bold'; //ADDED BY BRYCE/WILL
     enemyHealthBarEl.setAttribute('max', enemy.maxHp);
     enemyHealthBarEl.setAttribute('value', enemy.currentHp);
     enemyHealthNumberEl.textContent = enemy.currentHp;
     enemyHealthMaxNumberEl.textContent = enemy.maxHp;
-    //WILL AND BRYCE DEBUGGED THIS SHIT FUCK YALL
 }
 
-// USER OBJECTS ===========================================
-
-// Spaceship class to extend to player and ememy
-
+// SPACESHIP CLASS =========================================================
 class Spaceship {
-    // pass in name, hp, accuracy, damage, level
     constructor(name, hpStart, accuracy, dmg, level, hpAdded) {
         this.name = name;
         this.hpStart = hpStart; 
@@ -81,24 +65,21 @@ class Spaceship {
         repairBtnEl.disabled = false;
 
         const randomNum = generateRandomNum(10, 1);          
-        // if (probability > 3) {
-        // DANNY CHANGE: probability to randomNum, pull in accuracy property value so that as accuracy increase, chances of miss decreases
+        // DANNY ADDITION: probability to randomNum, pull in accuracy property value so that as accuracy increase, chances of miss decreases
         if (randomNum <= this.accuracy) {
             target.currentHp -= this.dmg;                
-            //insert some dom manipulation to display the what the console is logging
-            //and depleting enemy hp
             playLogs.innerHTML = `${this.name} attacked ${target.name} for ${this.dmg} damage!`;
-            playLogs.style.fontSize = '3rem';
-            playLogs.style.textTransform = 'uppercase';
-            playLogs.style.fontWeight = 'bold';
-            playLogs.style.fontFamily = "'Space Grotesk', sans-serif";
+            playLogs.style.fontSize = '3rem'; //ADDED BY BRYCE/WILL
+            playLogs.style.textTransform = 'uppercase'; //ADDED BY BRYCE/WILL
+            playLogs.style.fontWeight = 'bold'; //ADDED BY BRYCE/WILL
+            playLogs.style.fontFamily = "'Space Grotesk', sans-serif"; //ADDED BY BRYCE/WILL
             console.log(`${this.name} attacked ${target.name} for ${this.dmg} damage!`);                
         } else {
             playLogs.innerHTML = `${this.name} missed!`;
-            playLogs.style.fontSize = '3rem';
-            playLogs.style.textTransform = 'uppercase';
-            playLogs.style.fontWeight = 'bold';
-            playLogs.style.fontFamily = "'Space Grotesk', sans-serif";
+            playLogs.style.fontSize = '3rem'; //ADDED BY BRYCE/WILL
+            playLogs.style.textTransform = 'uppercase'; //ADDED BY BRYCE/WILL
+            playLogs.style.fontWeight = 'bold'; //ADDED BY BRYCE/WILL
+            playLogs.style.fontFamily = "'Space Grotesk', sans-serif"; //ADDED BY BRYCE/WILL
             console.log(`${this.name} missed!`);
         }                          
     }    
@@ -115,8 +96,7 @@ class Spaceship {
     }
 }
 
-// Player
-
+// PLAYER SUBCLASS ========================================================
 class Player extends Spaceship {
     constructor(name, hpStart, accuracy, dmg, level, hpAdded) {
         super(name, hpStart, accuracy, dmg, level, hpAdded)        
@@ -126,68 +106,64 @@ class Player extends Spaceship {
         if(this.currentHp >= maxHealth) {
             document.querySelector("#repair-btn").disabled = true;
             playLogs.innerHTML = "You're at full health!";
-            playLogs.style.fontSize = '3rem';
-            playLogs.style.textTransform = 'uppercase';
-            playLogs.style.fontWeight = 'bold';
-            playLogs.style.fontFamily = "'Space Grotesk', sans-serif";
+            playLogs.style.fontSize = '3rem'; //ADDED BY BRYCE/WILL
+            playLogs.style.textTransform = 'uppercase'; //ADDED BY BRYCE/WILL
+            playLogs.style.fontWeight = 'bold'; //ADDED BY BRYCE/WILL
+            playLogs.style.fontFamily = "'Space Grotesk', sans-serif"; //ADDED BY BRYCE/WILL
             console.log("You're at full health!");
         } else {
-            //heal 10%-20% of hp
-            const addedHealth = generateRandomNum(20, 10);
-            if ((this.currentHp + addedHealth) >= maxHealth) {
-                this.currentHp = maxHealth;
+            //heal 10-20% of health
+            const addedHealth = generateRandomNum(20, 10); // DANNY ADDITION
+            if ((this.currentHp + addedHealth) >= maxHealth) { // DANNY ADDITION
+                this.currentHp = maxHealth; // DANNY ADDITION
             } else {
                 this.currentHp += addedHealth;
             }
             playLogs.innerHTML = `${this.name} healed and is now at ${this.currentHp} HP!`;
-            playLogs.style.fontSize = '3rem';
-            playLogs.style.textTransform = 'uppercase';
-            playLogs.style.fontWeight = 'bold';
-            playLogs.style.fontFamily = "'Space Grotesk', sans-serif";            
+            playLogs.style.fontSize = '3rem'; //ADDED BY BRYCE/WILL
+            playLogs.style.textTransform = 'uppercase'; //ADDED BY BRYCE/WILL
+            playLogs.style.fontWeight = 'bold'; //ADDED BY BRYCE/WILL
+            playLogs.style.fontFamily = "'Space Grotesk', sans-serif"; //ADDED BY BRYCE/WILL         
         }      
         initializeContent(this, target);                                  
     }
 
     defend(target) {
-    //deflect 10%-20% of damage from enemy attack
+    //deflects 10-20% of enemy attack dmg
         setTimeout(() => {
-            let damage = target.dmg;
-            let defense = generateRandomNum(20, 10);
-            if (damage <= defense) {
-            playLogs.innerHTML = `${this.name} defended the attack!`;
+            let damage = target.dmg; // DANNY ADDITION
+            let defense = generateRandomNum(20, 10); // DANNY ADDITION
+            if (damage <= defense) { // DANNY ADDITION
+            playLogs.innerHTML = `${this.name} defended the attack!`; // DANNY ADDITION
             playLogs.style.fontSize = '3rem';
-            playLogs.style.textTransform = 'uppercase';
-            playLogs.style.fontWeight = 'bold';
-            playLogs.style.fontFamily = "'Space Grotesk', sans-serif";
+            playLogs.style.textTransform = 'uppercase'; //ADDED BY BRYCE/WILL
+            playLogs.style.fontWeight = 'bold'; //ADDED BY BRYCE/WILL
+            playLogs.style.fontFamily = "'Space Grotesk', sans-serif"; //ADDED BY BRYCE/WILL
             console.log(`${this.name} defended the attack!`);
             } else {
             this.currentHp -= (damage - defense);
             playLogs.innerHTML = `${this.name} defended the attack but took ${damage - defense} damage!`;
-            playLogs.style.fontSize = '3rem';
-            playLogs.style.textTransform = 'uppercase';
-            playLogs.style.fontWeight = 'bold';
-            playLogs.style.fontFamily = "'Space Grotesk', sans-serif";
+            playLogs.style.fontSize = '3rem'; //ADDED BY BRYCE/WILL
+            playLogs.style.textTransform = 'uppercase'; //ADDED BY BRYCE/WILL
+            playLogs.style.fontWeight = 'bold'; //ADDED BY BRYCE/WILL
+            playLogs.style.fontFamily = "'Space Grotesk', sans-serif"; //ADDED BY BRYCE/WILL
             console.log(`${this.name} defended the attack but took ${damage - defense} damage!`);
             }
         }, 500);
         }
 }
 
-// Enemy
-
-// Create Enemy subclass that extends Spaceship
+// ENEMY SUBCLASS EXTENDING SPACESHIP
 class Enemy extends Spaceship {
     constructor(name, hpStart, accuracy, dmg, level, hpAdded)  {
         super(name, hpStart, accuracy, dmg, level, hpAdded);        
     }
 }
 
-// BUILD PLAYER OBJECTS ===========================================
 
-// Player
+//PLAYER/ENEMY OBJECTS ===========================================
 const player1 = new Player('Player 1', 100, 7, 5, 1, 0);
 
-// Enemies
 const enemy1 = new Enemy("Starshredder", 100, 7, 5, 1, 0);
 const enemy2 = new Enemy("Nebula Scourge", 100, 7, 5, 2, 0);
 const enemy3 = new Enemy("Cosmic Menace", 100, 7, 5, 3, 0);
@@ -199,28 +175,41 @@ const enemy8 = new Enemy("Plasma Leviathan", 100, 7, 5, 8, 0);
 const enemy9 = new Enemy("GARBAGE MAN", 100, 7, 5, 9, 0);
 const enemy10 = new Enemy("Arthur SS", 100, 7, 5, 10, 0);
 
-// START LEVEL 1 ===========================================
 
-// Initialize the content on screen for level
+// STARTING LEVEL 1 ===========================================
+// INITIALIZING THE CONTENT ON THE SCREEN FOR NEXT LEVEL
 initializeContent(player1, enemy1);
+const enemies = [enemy1, enemy2, enemy3, enemy4, enemy5, enemy6, enemy7, enemy8, enemy9, enemy10];
+let currentEnemyIndex = 0;
 
 // PLAYER ACTIONS ===========================================
-
-//attack event listener    
+// JALENS CODE FOR LEVELS/ROUNDS  
+// ATTACK EVENT LISTENER ++++
  attackBtnEl.addEventListener("click", e => {  
     if (attackBtnEl.disabled) e.preventDefault();
-    player1.attack(enemy1);
+    player1.attack(enemies[currentEnemyIndex]);
     attackBtnEl.disabled = true;
     repairBtnEl.disabled = true;
-    initializeContent(player1, enemy1);  
+    initializeContent(player1, enemies[currentEnemyIndex]); 
 
     setTimeout(() => {        
-        enemy1.attack(player1);   
-        initializeContent(player1, enemy1);  
-    }, 2000);         
+        enemies[currentEnemyIndex].attack(player1);   
+        initializeContent(player1, enemies[currentEnemyIndex]);  
+    }, 2000);
+
+    if (enemies[currentEnemyIndex].currentHp <= 0) {
+        currentEnemyIndex++;
+        player1.levelUp();
+        //start next level
+        if (currentEnemyIndex < enemies.length) {
+            initializeContent(player1, enemies[currentEnemyIndex]);
+        } else {
+            console.log("You win!");
+        }
+    }
 });
     
-//repair event listener
+// REPAIR EVENT LISTENER ++++
 repairBtnEl.addEventListener("click", e => {
     if (repairBtnEl.disabled) e.preventDefault();
     player1.repair(enemy1);
@@ -233,3 +222,32 @@ repairBtnEl.addEventListener("click", e => {
         initializeContent(player1, enemy1);  
     }, 2000);    
 });
+
+// ORIG CODE FOR LEVELS/ROUNDS
+// attack event listener    
+//  attackBtnEl.addEventListener("click", e => {  
+//     if (attackBtnEl.disabled) e.preventDefault();
+//     player1.attack(enemy1);
+//     attackBtnEl.disabled = true;
+//     repairBtnEl.disabled = true;
+//     initializeContent(player1, enemy1);  
+
+//     setTimeout(() => {        
+//         enemy1.attack(player1);   
+//         initializeContent(player1, enemy1);  
+//     }, 2000);         
+// });
+    
+// repair event listener
+// repairBtnEl.addEventListener("click", e => {
+//     if (repairBtnEl.disabled) e.preventDefault();
+//     player1.repair(enemy1);
+//     attackBtnEl.disabled = true;
+//     repairBtnEl.disabled = true;
+//     initializeContent(player1, enemy1);  
+
+//     setTimeout(() => {        
+//         enemy1.attack(player1);   
+//         initializeContent(player1, enemy1);  
+//     }, 2000);    
+// });

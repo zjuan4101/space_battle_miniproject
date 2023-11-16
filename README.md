@@ -61,3 +61,13 @@ FINAL BOSS/ENDGAME
 	-you won animation
 	-option to restart
 	-compilation of stats
+
+
+
+DANNY's EXPLANATION 
+//3 hp values: hp start, hp added, current hp
+//hp start = first number we pull in when game begins (100)
+//hp added = anytime we want to add hp with upgrades or levels increasing
+//current hp = hp start + hp added 
+//method updateCurrentHp that subtracts the dmg from currentHp
+//when level restarts currentHp = hp start + hp added
