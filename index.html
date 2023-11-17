@@ -1,78 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css" />
-  <script src="script.js" defer></script>
-  <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/86/86581.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300&display=swap" rel="stylesheet">
-  <title>Space Battle</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Space Game Start Screen</title>
+  <link href="css/starting.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
-  <!-- HP Bars in header -->
-  <div class="hp-bars">
-    <div class="hp-bars__player">
-      <!-- <p class="total-hp">HP <span id="php"></span>/<span id="total-php"></span></p> -->
-      <div class="player-container">
-        <h3 id='player-name' class="player-name">USS Assembly</h3>
-        <div class="player-hp-container">
-          <progress id='player-health-bar' max="100" value="50" class="player-hp"></progress>
-          <p class="total-hp">HP <span id="php"></span>/<span id="total-php"></span></p>
-        </div>
-      </div>
-    </div>
-    <div class="level-container">
-      <img class="ga-logo" src="https://seeklogo.com/images/G/general-assembly-logo-D5C634F07A-seeklogo.com.png"
-        alt="" />
-      <div class="level">LEVEL
-        <div class="levelv"><span id="level"></span>/10</div>
-      </div>
-    </div>
-    <div class="hp-bars__enemy">
-      <!-- <p class="total-hp">HP <span id="ehp"></span>/<span id="total-ehp"></span></p> -->
-      <div class="enemy-container">
-        <h3 id='enemy-name' class="enemy-name">Garbage Man</h3>
-        <div class="enemy-hp-container">
-          <progress id='enemy-health-bar' max="100" value="50" class="enemy-hp"></progress>
-          <p class="total-hp">HP <span id="ehp"></span>/<span id="total-ehp"></span></p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="characters">
-    <!-- Player Ship -->
-    <div class="player">
-      <img class="player-ship" src="https://i.imgur.com/CoK62ir.png" alt="" />
-      <img class="player-attack" src="https://i.imgur.com/iZ1qLxs.png" alt="">
-    </div>
 
-    <!-- Enemy Ships -->
-    <div class="enemy">
-      <img class="enemy-ship" src="https://i.imgur.com/InBfg8s.png" alt="" />
-      <img class="garbage-attack" src="https://i.imgur.com/v6hyIAT.png" alt="">
-    </div>
-  </div>
+  <div id="menu">REVENGE OF<BR><SPAN>GARBAGEMAN</SPAN>
+    <BR style="line-height:70px;">
+    <br>
+    <!-- <input type="button" value="Start" target="/game.html"></input> -->
+    <button onclick="window.location.href='game.html'">Start</button>
+    <BR style="line-height:70px;">
 
-  <!-- Play-by-Play Logs -->
-  <div id='play-logs' class="play-logs">
-    <p class="play-logs__message">
-      USS Assembly attacked Garbage Man for 20HP! Critical Hit!
-    </p>
   </div>
-
-  <!-- Attack, Repair, Defend Buttons -->
-  <div class="player-moves">
-    <button id='attack-btn' class="player-move-btn">Attack</button>
-    <button id='repair-btn' class="player-move-btn">Repair</button>
-    <button id='defend-btn' class="player-move-btn">Defend</button>
-  </div>
-     
 </body>
-
 
 </html>

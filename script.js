@@ -37,15 +37,15 @@ function initializeContent(player, enemy) {
     playerHealthNumberEl.textContent = player.currentHp;
     playerHealthMaxNumberEl.textContent = player.maxHp;
 
-    enemyNameEl.textContent = enemy.name;
+    enemyNameEl.textContent = enemies[currentEnemyIndex].name;
     enemyNameEl.style.fontFamily = "'Space Grotesk', sans-serif"; //ADDED BY BRYCE/WILL
     enemyNameEl.style.textTransform = 'uppercase'; //ADDED BY BRYCE/WILL
     enemyNameEl.style.fontSize = '3rem'; //ADDED BY BRYCE/WILL
     enemyNameEl.style.fontWeight = 'bold'; //ADDED BY BRYCE/WILL
-    enemyHealthBarEl.setAttribute('max', enemy.maxHp);
-    enemyHealthBarEl.setAttribute('value', enemy.currentHp);
-    enemyHealthNumberEl.textContent = enemy.currentHp;
-    enemyHealthMaxNumberEl.textContent = enemy.maxHp;
+    enemyHealthBarEl.setAttribute('max', enemies[currentEnemyIndex].maxHp);
+    enemyHealthBarEl.setAttribute('value', enemies[currentEnemyIndex].currentHp);
+    enemyHealthNumberEl.textContent = enemies[currentEnemyIndex].currentHp;
+    enemyHealthMaxNumberEl.textContent = enemies[currentEnemyIndex].maxHp;
 }
 
 // SPACESHIP CLASS =========================================================
@@ -102,6 +102,11 @@ class Player extends Spaceship {
     constructor(name, hpStart, accuracy, dmg, level, hpAdded) {
         super(name, hpStart, accuracy, dmg, level, hpAdded)        
     }
+    levelHeal(target) {
+        this.currentHp = 100;
+        //if enemy.attack player 1 currentHp = 100
+    }
+
     repair(target) {         
         const maxHealth = this.hpStart + this.hpAdded;
         if(this.currentHp >= maxHealth) {
@@ -165,23 +170,25 @@ class Enemy extends Spaceship {
 //PLAYER/ENEMY OBJECTS ===========================================
 const player1 = new Player('Player 1', 100, 7, 5, 1, 0);
 
-const enemy1 = new Enemy("Starshredder", 100, 7, 5, 1, 0);
-const enemy2 = new Enemy("Nebula Scourge", 100, 7, 5, 2, 0);
-const enemy3 = new Enemy("Cosmic Menace", 100, 7, 5, 3, 0);
-const enemy4 = new Enemy("Galactic Destructor", 100, 7, 5, 4, 0);
-const enemy5 = new Enemy("Dark Matter Raider", 100, 7, 5, 5, 0);
-const enemy6 = new Enemy("Quantum Marauder", 100, 7, 5, 6, 0);
-const enemy7 = new Enemy("Interstellar Annihilator", 100, 7, 5, 7, 0);
-const enemy8 = new Enemy("Plasma Leviathan", 100, 7, 5, 8, 0);
-const enemy9 = new Enemy("GARBAGE MAN", 100, 7, 5, 9, 0);
-const enemy10 = new Enemy("Arthur SS", 100, 7, 5, 10, 0);
+const enemy1 = new Enemy("Starshredder", 100, 7, 5, 1, 0, 0, 0);
+const enemy2 = new Enemy("Nebula Scourge", 100, 7, 5, 2, 0, 0, 0);
+const enemy3 = new Enemy("Cosmic Menace", 100, 7, 5, 3, 0, 0, 0);
+const enemy4 = new Enemy("Galactic Destructor", 100, 7, 5, 4, 0, 0, 0);
+const enemy5 = new Enemy("Dark Matter Raider", 100, 7, 5, 5, 0, 0, 0);
+const enemy6 = new Enemy("Quantum Marauder", 100, 7, 5, 6, 0, 0, 0);
+const enemy7 = new Enemy("Interstellar Annihilator", 100, 7, 5, 7, 0, 0, 0);
+const enemy8 = new Enemy("Plasma Leviathan", 100, 7, 5, 8, 0, 0, 0);
+const enemy9 = new Enemy("GARBAGE MAN", 100, 7, 5, 9, 0, 0, 0);
+const enemy10 = new Enemy("Arthur SS", 100, 7, 5, 10, 0, 0, 0);
 
 
 // STARTING LEVEL 1 ===========================================
 // INITIALIZING THE CONTENT ON THE SCREEN FOR NEXT LEVEL
-initializeContent(player1, enemy1);
 const enemies = [enemy1, enemy2, enemy3, enemy4, enemy5, enemy6, enemy7, enemy8, enemy9, enemy10];
 let currentEnemyIndex = 0;
+
+initializeContent(player1, enemies[currentEnemyIndex]);
+
 
 // PLAYER ACTIONS ===========================================
 // JALENS CODE FOR LEVELS/ROUNDS  
@@ -196,11 +203,12 @@ let currentEnemyIndex = 0;
     setTimeout(() => {        
         enemies[currentEnemyIndex].attack(player1);   
         initializeContent(player1, enemies[currentEnemyIndex]);  
-    }, 2000);
+    }, 100);
 
     if (enemies[currentEnemyIndex].currentHp <= 0) {
         currentEnemyIndex++;
         player1.levelUp();
+        player1.levelHeal();
         //start next level
         if (currentEnemyIndex < enemies.length) {
             initializeContent(player1, enemies[currentEnemyIndex]);
@@ -213,16 +221,39 @@ let currentEnemyIndex = 0;
 // REPAIR EVENT LISTENER ++++
 repairBtnEl.addEventListener("click", e => {
     if (repairBtnEl.disabled) e.preventDefault();
-    player1.repair(enemy1);
+    player1.repair(enemies[currentEnemyIndex]);
     attackBtnEl.disabled = true;
     repairBtnEl.disabled = true;
-    initializeContent(player1, enemy1);  
+    initializeContent(player1, enemies[currentEnemyIndex]);  
 
     setTimeout(() => {        
-        enemy1.attack(player1);   
-        initializeContent(player1, enemy1);  
+        enemies[currentEnemyIndex].attack(player1);   
+        initializeContent(player1, enemies[currentEnemyIndex]);  
     }, 2000);    
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // ORIG CODE FOR LEVELS/ROUNDS
 // attack event listener    
