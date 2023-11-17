@@ -104,7 +104,6 @@ class Player extends Spaceship {
     }
     levelHeal(target) {
         this.currentHp = 100;
-        //if enemy.attack player 1 currentHp = 100
     }
 
     repair(target) {         
@@ -200,13 +199,16 @@ initializeContent(player1, enemies[currentEnemyIndex]);
     repairBtnEl.disabled = true;
     initializeContent(player1, enemies[currentEnemyIndex]); 
 
-    setTimeout(() => {        
+    const timeout = setTimeout(() => {        
         enemies[currentEnemyIndex].attack(player1);   
         initializeContent(player1, enemies[currentEnemyIndex]);  
     }, 100);
 
+
+    //enemy HP is 0 --> new level content initialized
     if (enemies[currentEnemyIndex].currentHp <= 0) {
         currentEnemyIndex++;
+        clearTimeout(timeout);
         player1.levelUp();
         player1.levelHeal();
         //start next level
@@ -214,7 +216,7 @@ initializeContent(player1, enemies[currentEnemyIndex]);
             initializeContent(player1, enemies[currentEnemyIndex]);
         } else {
             console.log("You win!");
-        }
+        }  
     }
 });
     
