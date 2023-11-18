@@ -7,13 +7,21 @@
   <link rel="stylesheet" href="css/stylegame.css" />
   <script src="script.js" defer></script>
   <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/86/86581.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300&display=swap" rel="stylesheet"> -->
   <title>Space Battle</title>
 </head>
 
 <body>
+  <!-- Audio Elements -->
+  <div id="all-sound">
+    <audio id="attack-sound" src="https://docs.google.com/uc?export=download&id=1meUjLwi9QsWogZkDvBfUH_RcZheHpRK9"></audio>
+    <audio id="repair-sound" src="https://docs.google.com/uc?export=download&id=11loKDUxfFw0GuCPL5wMSGszRfYjkn_D7"></audio>
+    <!-- <audio id="battle-music" src="https://docs.google.com/uc?export=download&id=1hOLO2iyrr6u1VR0Q6GIbyyFFjNkTwSG6" loop></audio>
+    <audio id="title-screen-music" src="https://docs.google.com/uc?export=download&id=1EqebZCOLJeKHaDwhOjs6_L-YFGP04bLT" loop></audio>
+    <audio id="end-screen-music" src="https://docs.google.com/uc?export=download&id=1xDun_-61-XaAQKQCGeOxrwGODoXekuXs"  loop></audio> -->
+  </div>
  <!-- HP Bars in header -->
  <div class="hp-bars">
   <div class="hp-bars__player">
@@ -26,7 +34,10 @@
       </div>
     </div>
   </div>
-    <img class="ga-logo" src="https://seeklogo.com/images/G/general-assembly-logo-D5C634F07A-seeklogo.com.png" alt="" />
+  <div class="level">LVL
+    <div class="levelv"><span id="level"></span>/10</div>
+  </div>
+    <!-- <img class="ga-logo" src="https://seeklogo.com/images/G/general-assembly-logo-D5C634F07A-seeklogo.com.png" alt="" /> -->
   <div class="hp-bars__enemy">
     <!-- <p class="total-hp">HP <span id="ehp"></span>/<span id="total-ehp"></span></p> -->
     <div class="enemy-container">
@@ -38,9 +49,9 @@
     </div>
   </div>
 </div>
-<div class="level">LEVEL
+<!-- <div class="level">LEVEL
   <div class="levelv"><span id="level"></span>/10</div>
-</div>
+</div> -->
 <div class="characters">
   <!-- Player Ship -->
   <div class="player">
@@ -50,7 +61,7 @@
 
   <!-- Enemy Ships -->
   <div class="enemy">
-    <img class="enemy-ship" src="https://i.imgur.com/InBfg8s.png" alt="" />
+    <img id ='enemy-ship' class="enemy-ship" src="https://i.imgur.com/InBfg8s.png" alt="" />
     <img class="garbage-attack" src="https://i.imgur.com/v6hyIAT.png" alt="">
   </div>
 </div>
